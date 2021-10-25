@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Header } from "../Home/Header";
 import memestyles from "./Memes.module.css";
@@ -11,9 +12,16 @@ export const Memes = () => {
   }, []);
 
   const getData = async () => {
-    const response = await fetch(url);
-    const jsonData = await response.json();
-    setUserData(jsonData);
+    // const response = await fetch(url);
+    // const jsonData = await response.json();
+    await axios
+      .get(url)
+      .then((res) => {
+        setUserData(jsonData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -48,12 +56,12 @@ export const Memes = () => {
                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
                   </svg>
                 </a>
-                <a
-                  href=""
+                <button
+                  onClick={getData}
                   className={"btn btn-primary btn-lg" + " " + memestyles.nsbtns}
                 >
                   Next&nbsp;&gt;&gt;
-                </a>
+                </button>
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ const not_found = require("./middleware/not-found");
 const error_handler = require("./middleware/error-handler");
 const port = process.env.PORT || 5000;
 
-const cors = require("cors");
+// const cors = require("cors");
 const path = require("path");
 
 const loginRouter = require("./routes/login");
@@ -20,7 +20,7 @@ const auth = require("./middleware/auth");
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 const buildPath = path.join(__dirname, "healify", "build");
 app.use(express.static(buildPath));
@@ -41,7 +41,7 @@ app.get("/api/v1", auth, checkUser);
 // error paths
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/headlify/build/index.html"));
+  res.sendFile(path.join(__dirname, "/healify/build/index.html"));
 });
 app.use(not_found);
 app.use(error_handler);
