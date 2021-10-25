@@ -17,8 +17,12 @@ export const Memes = () => {
     await axios
       .get(url)
       .then((res) => {
-        console.log(jsonData);
-        setUserData(jsonData);
+        console.log(res);
+        let x = res.data;
+        if (res.data.data) {
+          x = res.data.data;
+        }
+        setUserData(x);
       })
       .catch((err) => {
         console.log(err);
