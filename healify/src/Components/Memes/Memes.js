@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Header } from "../Home/Header";
 import memestyles from "./Memes.module.css";
-const url = "http://meme-api.herokuapp.com/gimme/wholesomememes";
+const url = "https://meme-api.herokuapp.com/gimme/wholesomememes";
 
 export const Memes = () => {
   const [userData, setUserData] = useState({});
